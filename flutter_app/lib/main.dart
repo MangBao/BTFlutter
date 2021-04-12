@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/test1.dart';
+import 'package:flutter_app/app_page.dart';
 
 void main() {
-  runApp(MyProfileApp());
+  runApp(myProfile());
 }
 
 class MyApp extends StatelessWidget {
