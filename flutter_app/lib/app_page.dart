@@ -6,7 +6,7 @@ class myProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "My Profile",
-      theme: ThemeData(primarySwatch: Colors.red),
+      theme: ThemeData(primarySwatch: Colors.orange),
       home: Profile_App(),
     );
   }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model.dart';
 import 'package:group_radio_button/group_radio_button.dart';
+import 'package:image_picker/image_picker.dart';
 
-Future<DateTime> _selectDate(DateTime initialDate, BuildContext context) async{
+Future<DateTime> _selectDate(DateTime initialDate, BuildContext context) async {
   DateTime date = initialDate == null ? DateTime.now() : initialDate;
   var datePicked = await showDatePicker(
     context: context,
-    initialDate:date,
+    initialDate: date,
     firstDate: DateTime.now().subtract(Duration(days: 365*50)),
     lastDate: DateTime.now().add(Duration(days: 365*50)),
   );
@@ -15,6 +16,7 @@ Future<DateTime> _selectDate(DateTime initialDate, BuildContext context) async{
 
 class EditPage extends StatefulWidget {
   MyProfile profile;
+
   EditPage({Key key, this.profile});//contructer
 
   @override
@@ -27,8 +29,10 @@ class _EditPageState extends State<EditPage> {
   TextEditingController queQuanTextEditingController = TextEditingController();
   TextEditingController soThichTextEditingController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size.width * 0.9;
     return Scaffold(
       appBar: AppBar(
         title: Text("Edit Page"),
@@ -38,7 +42,9 @@ class _EditPageState extends State<EditPage> {
         child: Column(
           children: [
             _buildTextEdit("Họ tên", hoTenTextEditingController),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             Text('Giới tính'),
             Container(
               decoration: BoxDecoration(
@@ -75,7 +81,7 @@ class _EditPageState extends State<EditPage> {
                   var newDate = await _selectDate(widget.profile.ngaySinh, context);
                   if(newDate != null){
                     setState(() {
-                      widget.profile.ngaySinh =newDate;
+                      widget.profile.ngaySinh = newDate;
                       ngaySinhTextEditingController.text = "${newDate.day}/${newDate.month}/${newDate.year}";//$ biểu thức hổ trợ trong chuỗi
                     });
                   }
@@ -110,7 +116,9 @@ class _EditPageState extends State<EditPage> {
     ngaySinhTextEditingController.text = widget.profile.ngaySinh.toString();
     queQuanTextEditingController.text = widget.profile.queQuan;
     soThichTextEditingController.text = widget.profile.soThich;
+    // _image = widget.profile.imageAssest as File;
   }
+
   //những cái khác nhau chuyển về tham số
   Widget _buildTextEdit(String label, TextEditingController controller){
     return TextField(
@@ -125,6 +133,7 @@ class _EditPageState extends State<EditPage> {
     widget.profile.hoTen = hoTenTextEditingController.text;
     widget.profile.queQuan = queQuanTextEditingController.text;
     widget.profile.soThich = soThichTextEditingController.text;
+    // widget.profile.imageAssest = _image as String;
     //chỉ gán 3 cái vì ngày sinh sexddc cập nhập
     Navigator.pop(context,widget.profile);
     // gỡ màn hình đang hiển thị ra khỏi

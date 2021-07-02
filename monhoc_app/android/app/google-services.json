@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "898886091013",
+    "project_id": "monhoc-1675c",
+    "storage_bucket": "monhoc-1675c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898886091013:android:0e7463ac20c963c793776c",
+        "android_client_info": {
+          "package_name": "vn.edu.ntu.mangbao.monhocapp.monhoc_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898886091013-8scm8bongnu0pi17i3o70gr2akm4u0dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCULBckGQLgleHP2jaLSc3WTGZY2eqwRGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898886091013-8scm8bongnu0pi17i3o70gr2akm4u0dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

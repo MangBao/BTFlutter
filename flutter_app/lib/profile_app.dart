@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/edit_page.dart';
 import 'package:flutter_app/model.dart';
 import 'package:group_radio_button/group_radio_button.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Profile_App extends StatefulWidget {
   @override
@@ -10,6 +12,31 @@ class Profile_App extends StatefulWidget {
 
 class _Profile_AppState extends State<Profile_App> {
   MyProfile profile;
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImageFormCamera() async {
+    final pickedImage = await picker.getImage(source: ImageSource.camera);
+
+    setState(() {
+      if(pickedImage != null){
+        _image = File(pickedImage.path);
+      }else{
+        print("Chưa có ảnh nào được chọn");
+      }
+    });
+  }
+  Future getImageFormFolder() async {
+    final pickedImage = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if(pickedImage != null){
+        _image = File(pickedImage.path);
+      }else{
+        print("Chưa có ảnh nào được chọn");
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width*0.9;
@@ -24,13 +51,37 @@ class _Profile_AppState extends State<Profile_App> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              /*Center(
                 child: Container(
                   width: size,
                   height: 2/3*size,
                   child: Image.asset(profile.imageAssest),
                 ),
+              ),*/
+              Container(
+                width: size,
+                height: 2 / 3 * size,
+                child: Center(
+                  child: _image == null ? Image.asset(profile.imageAssest) : Image.file(_image),
+                ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  FloatingActionButton(
+                    onPressed: getImageFormFolder,
+                    tooltip: "Chọn từ thư mục",
+                    child: Icon(Icons.folder_rounded),),
+                  FloatingActionButton(
+                    onPressed: getImageFormCamera,
+                    tooltip: "Chọn từ camera",
+                    child: Icon(Icons.camera_alt_rounded),)
+                ],
+              ),
+
               SizedBox(height: 10,),
               Text("Họ và tên:"),
               Text(profile.hoTen,
@@ -115,7 +166,7 @@ class _Profile_AppState extends State<Profile_App> {
     super.initState();
     profile = MyProfile(
       hoTen: "Trần Thành Công",
-      ngaySinh: new DateTime(2000,6,1),
+      ngaySinh: new DateTime(2000,1,13),
       nam: true,
       queQuan: "Nha Trang, Khánh Hòa",
       soThich: "Xem phim, nghe nhạc, cafe với bạn bè, chụp ảnh khi rãnh rỗi",

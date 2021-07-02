@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "401801833784",
+    "project_id": "qlmh-8ba8d",
+    "storage_bucket": "qlmh-8ba8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401801833784:android:5e5713e5ce26ac19e965cd",
+        "android_client_info": {
+          "package_name": "vn.edu.ntu.mang_bao.bai1_qlmh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401801833784-kb6iu21mg9fgck4curvnoj9tj58qb1bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSPLPDXU2ZVeskXSREu7YFymypxaVZcQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401801833784-kb6iu21mg9fgck4curvnoj9tj58qb1bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
